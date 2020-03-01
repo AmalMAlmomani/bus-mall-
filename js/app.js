@@ -64,13 +64,14 @@ for (var i = 0; i < imgArray.length; i++) {
 //render 3 random images
 var leftImg, centerImg, rightImg;
 function render() {
-   
     leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
     console.log(leftImg);
     centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
     console.log(centerImg);
     rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
     console.log(rightImg);
+    
+    if(leftImg !== centerImg && leftImg !== rightImg && centerImg !== rightImg ){
     //////left
     leftImage.setAttribute('src', leftImg.imgPath);
     leftImage.setAttribute('alt', leftImg.name);
@@ -83,10 +84,13 @@ function render() {
     rightImage.setAttribute('src', rightImg.imgPath);
     rightImage.setAttribute('alt', rightImg.name);
     rightImage.setAttribute('title', rightImg.name);
-
-    
+}
 }
 render();
+
+
+
+
 /////////////////////////////////////////////////////////////
 
 //add the event listener to render new images
