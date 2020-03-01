@@ -94,7 +94,7 @@ function render() {
     rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
 
 
-    if (leftImg !== centerImg && leftImg !== rightImg && centerImg !== rightImg) {
+    if (leftImg !== centerImg && leftImg !== rightImg && centerImg !== rightImg && centerImg  !== leftImg ) {
         ///////left
         leftImage.setAttribute('src', leftImg.imgPath);
         leftImage.setAttribute('alt', leftImg.name);
