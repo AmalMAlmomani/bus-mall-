@@ -48,7 +48,7 @@ rightImage.title = imgArray[2];
 //create constructor function for the goats
 function Img(name) {
     this.name = name;
-    this.clicks = 0;
+    this.votes = 0;
     this.views = 0;
     this.imgPath = `img/${this.name}.jpg`;
     Img.all.push(this);
@@ -88,7 +88,7 @@ var leftImg, centerImg, rightImg;
 // }
 // render();
 ////////////////////////////
-function render() {
+function firstRender() {
     leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
     centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
     rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
@@ -109,7 +109,7 @@ function render() {
         rightImage.setAttribute('title', rightImg.name);
     }
 }
-render();
+firstRender();
 /////////////////////////////////////////////////////////////
 
 //add the event listener to render new images
@@ -119,32 +119,32 @@ function handleClickOnImg(event) {
     if (totalClicks < 25) {
         if (event.target.id !== 'images1') {
             if (event.target.id === 'lImage') {
-                leftImg.clicks++;
+                leftImg.votes++;
             } else if (event.target.id === 'cImage') {
-                centerImg.clicks++;
+                centerImg.votes++;
             } else if (event.target.id === 'rImage') {
-                rightImg.clicks++;
+                rightImg.votes++;
             }
             totalClicks++;
 
             leftImg.views++;
             centerImg.views++;
             rightImg.views++;
-            render();
+            firstRender();
         }
     } else {
         console.log('more than 25 clicks');
         images.removeEventListener('click', handleClickOnImg);
-        render2();
+        secondRender();
     }
 }
 
 
-function render2() {
+function secondRender() {
     var ulE1 = document.getElementById('finally');
     for (var i = 0; i < Img.all.length; i++) {
         var liE1 = document.createElement('li');
-        liE1.textContent = ` ${Img.all[i].name} had ${Img.all[i].clicks} Votes and was shown ${Img.all[i].views} times`;
+        liE1.textContent = ` ${Img.all[i].name} had ${Img.all[i].votes} Votes and was shown ${Img.all[i].views} times`;
         ulE1.appendChild(liE1);
     }
 }
