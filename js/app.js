@@ -86,6 +86,7 @@ function render() {
     rightImage.setAttribute('title', rightImg.name);
 }
 }
+
 render();
 
 // var leftImg, centerImg, rightImg;
