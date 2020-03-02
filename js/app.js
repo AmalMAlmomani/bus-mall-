@@ -48,7 +48,7 @@ rightImage.title = imgArray[2];
 //create constructor function for the goats
 function Img(name) {
     this.name = name;
-    this.clicks = 0;
+    this.votes = 0;
     this.views = 0;
     this.imgPath = `img/${this.name}.jpg`;
     Img.all.push(this);
@@ -63,66 +63,53 @@ for (var i = 0; i < imgArray.length; i++) {
 
 //render 3 random images
 var leftImg, centerImg, rightImg;
-function render() {
-    leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
-    console.log(leftImg);
-    centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
-    console.log(centerImg);
-    rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
-    console.log(rightImg);
-    
-    if(leftImg !== centerImg && leftImg !== rightImg && centerImg !== rightImg ){
-    //////left
-    leftImage.setAttribute('src', leftImg.imgPath);
-    leftImage.setAttribute('alt', leftImg.name);
-    leftImage.setAttribute('title', leftImg.name);
-    //////center
-    centerImage.setAttribute('src', centerImg.imgPath);
-    centerImage.setAttribute('alt', centerImg.name);
-    centerImage.setAttribute('title', centerImg.name);
-    //////right
-    rightImage.setAttribute('src', rightImg.imgPath);
-    rightImage.setAttribute('alt', rightImg.name);
-    rightImage.setAttribute('title', rightImg.name);
-}
-}
-
-render();
-
-// var leftImg, centerImg, rightImg;
 // function render() {
+
 //     leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
 //     console.log(leftImg);
 //     centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
 //     console.log(centerImg);
 //     rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
 //     console.log(rightImg);
+//     //////left
+//     leftImage.setAttribute('src', leftImg.imgPath);
+//     leftImage.setAttribute('alt', leftImg.name);
+//     leftImage.setAttribute('title', leftImg.name);
+//     //////center
+//     centerImage.setAttribute('src', centerImg.imgPath);
+//     centerImage.setAttribute('alt', centerImg.name);
+//     centerImage.setAttribute('title', centerImg.name);
+//     //////right
+//     rightImage.setAttribute('src', rightImg.imgPath);
+//     rightImage.setAttribute('alt', rightImg.name);
+//     rightImage.setAttribute('title', rightImg.name);
 
-// while(leftImg === centerImg || leftImg === rightImg || centerImg === rightImg ){
-//     leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
-//     console.log(leftImg);
-//     centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
-//     console.log(centerImg);
-//     rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
-//     console.log(rightImg);
-// }
 
-//    //////left
-//    leftImage.setAttribute('src', leftImg.imgPath);
-//    leftImage.setAttribute('alt', leftImg.name);
-//    leftImage.setAttribute('title', leftImg.name);
-//    //////center
-//    centerImage.setAttribute('src', centerImg.imgPath);
-//    centerImage.setAttribute('alt', centerImg.name);
-//    centerImage.setAttribute('title', centerImg.name);
-//    //////right
-//    rightImage.setAttribute('src', rightImg.imgPath);
-//    rightImage.setAttribute('alt', rightImg.name);
-//    rightImage.setAttribute('title', rightImg.name);
 // }
 // render();
+////////////////////////////
+function firstRender() {
+    leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
+    centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
+    rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
 
 
+    if (leftImg !== centerImg && leftImg !== rightImg && centerImg !== rightImg && centerImg  !== leftImg ) {
+        ///////left
+        leftImage.setAttribute('src', leftImg.imgPath);
+        leftImage.setAttribute('alt', leftImg.name);
+        leftImage.setAttribute('title', leftImg.name);
+        //////center
+        centerImage.setAttribute('src', centerImg.imgPath);
+        centerImage.setAttribute('alt', centerImg.name);
+        centerImage.setAttribute('title', centerImg.name);
+        //////right
+        rightImage.setAttribute('src', rightImg.imgPath);
+        rightImage.setAttribute('alt', rightImg.name);
+        rightImage.setAttribute('title', rightImg.name);
+    }
+}
+firstRender();
 /////////////////////////////////////////////////////////////
 
 //add the event listener to render new images
@@ -132,32 +119,32 @@ function handleClickOnImg(event) {
     if (totalClicks < 25) {
         if (event.target.id !== 'images1') {
             if (event.target.id === 'lImage') {
-                leftImg.clicks++;
+                leftImg.votes++;
             } else if (event.target.id === 'cImage') {
-                centerImg.clicks++;
+                centerImg.votes++;
             } else if (event.target.id === 'rImage') {
-                rightImg.clicks++;
+                rightImg.votes++;
             }
             totalClicks++;
 
             leftImg.views++;
             centerImg.views++;
             rightImg.views++;
-            render();
+            firstRender();
         }
     } else {
         console.log('more than 25 clicks');
         images.removeEventListener('click', handleClickOnImg);
-        render2();
+        secondRender();
     }
 }
 
 
-function render2() {
+function secondRender() {
     var ulE1 = document.getElementById('finally');
     for (var i = 0; i < Img.all.length; i++) {
         var liE1 = document.createElement('li');
-        liE1.textContent = ` ${Img.all[i].name} had ${Img.all[i].clicks} Votes and was shown ${Img.all[i].views} times`;
+        liE1.textContent = ` ${Img.all[i].name} had ${Img.all[i].votes} Votes and was shown ${Img.all[i].views} times`;
         ulE1.appendChild(liE1);
     }
 }
