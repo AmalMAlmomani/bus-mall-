@@ -4,7 +4,7 @@ var imgArray = ["bag", "banana", "bathroom", "boots", "breakfast", "bubblegum", 
 var names = [];
 var vote = [];
 
-
+var arrayClick =[] ;
 // get the images
 var leftImage = document.querySelector('#lImage');
 var centerImage = document.querySelector('#cImage');
@@ -105,7 +105,7 @@ function firstRender() {
     rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
 
 
-    while (leftImg === centerImg || leftImg === rightImg || centerImg === rightImg ) {
+    while (leftImg === centerImg || leftImg === rightImg || centerImg === rightImg || arrayClick.includes(centerImg.imgPath) || arrayClick.includes(leftImg.imgPath) || arrayClick.includes(rightImg.imgPath)) {
         leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
         centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
         rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
@@ -138,6 +138,10 @@ function firstRender() {
     rightImage.setAttribute('src', rightImg.imgPath);
     rightImage.setAttribute('alt', rightImg.name);
     rightImage.setAttribute('title', rightImg.name);
+
+    arrayClick[0]= leftImg.imgPath ; 
+    arrayClick[1]= rightImg.imgPath ;
+    arrayClick[2]= centerImg.imgPath ;
 }
 firstRender();
 /////////////////////////////////////////////////////////////
