@@ -1,10 +1,8 @@
 'use strict'
 
 var imgArray = ["bag", "banana", "bathroom", "boots", "breakfast", "bubblegum", "chair", "cthulhu", "dog-duck", "dragon", "pen", "pet-sweep", "scissors", "shark", "sweep", "tauntaun", "unicorn", "usb", "water-can", "wine-glass"];
-var names = [];
-var vote = [];
 
-var arrayClick =[] ;
+var arrayClick = [];
 // get the images
 var leftImage = document.querySelector('#lImage');
 var centerImage = document.querySelector('#cImage');
@@ -109,22 +107,8 @@ function firstRender() {
         leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
         centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
         rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
-    
-//     if (leftImg === centerImg || leftImg === rightImg || centerImg === rightImg ){
-//         leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
-//         centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
-//         rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
-        
-//     }else if(leftImg === centerImg || leftImg === rightImg || centerImg === rightImg ){
-//         leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
-//         centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
-//         rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
-        
-// }
- 
+    }
 
-}
-  
 
     ///////left
     leftImage.setAttribute('src', leftImg.imgPath);
@@ -139,9 +123,9 @@ function firstRender() {
     rightImage.setAttribute('alt', rightImg.name);
     rightImage.setAttribute('title', rightImg.name);
 
-    arrayClick[0]= leftImg.imgPath ; 
-    arrayClick[1]= rightImg.imgPath ;
-    arrayClick[2]= centerImg.imgPath ;
+    arrayClick[0] = leftImg.imgPath;
+    arrayClick[1] = rightImg.imgPath;
+    arrayClick[2] = centerImg.imgPath;
 }
 firstRender();
 /////////////////////////////////////////////////////////////
@@ -184,11 +168,19 @@ function secondRender() {
         ulE1.appendChild(liE1);
     }
 }
-
+  var names = [];
+    var vote = [];
+    var view = [];
 function Vote_click() {
+
+  
+
     for (var i = 0; i < Img.all.length; i++) {
         names.push(Img.all[i].name);
         vote.push(Img.all[i].votes);
+        view.push(Img.all[i].views);
+            
+
     }
 
 }
@@ -201,7 +193,7 @@ function thirdRender() {
         data: {
             labels: imgArray,/// images
             datasets: [{
-                label: `# of Votes ${totalClicks}  `,
+                label: `# of Votes `,
                 data: vote,///click,votes
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
@@ -236,7 +228,41 @@ function thirdRender() {
                     'rgba(255, 159, 64, 1)'
                 ],
                 borderWidth: 3
-            }]
+            },{
+                label: `# of Views `,
+                data: view,///view
+                backgroundColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                   
+
+                ],///color fill in bar 
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 3
+            } ]
         },
         options: {
             scales: {
