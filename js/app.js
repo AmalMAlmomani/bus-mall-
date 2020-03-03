@@ -107,20 +107,6 @@ function firstRender() {
         leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
         centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
         rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
-
-        //     if (leftImg === centerImg || leftImg === rightImg || centerImg === rightImg ){
-        //         leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
-        //         centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
-        //         rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
-
-        //     }else if(leftImg === centerImg || leftImg === rightImg || centerImg === rightImg ){
-        //         leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
-        //         centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
-        //         rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
-
-        // }
-
-
     }
 
 
