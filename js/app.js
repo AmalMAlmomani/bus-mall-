@@ -3,6 +3,8 @@
 var imgArray = ["bag", "banana", "bathroom", "boots", "breakfast", "bubblegum", "chair", "cthulhu", "dog-duck", "dragon", "pen", "pet-sweep", "scissors", "shark", "sweep", "tauntaun", "unicorn", "usb", "water-can", "wine-glass"];
 
 var arrayClick = [];
+
+
 // get the images
 var leftImage = document.querySelector('#lImage');
 var centerImage = document.querySelector('#cImage');
@@ -23,7 +25,7 @@ rightImage.alt = imgArray[2];
 rightImage.title = imgArray[2];
 
 
-//create constructor function for the goats
+//create constructor function for the products
 function Img(name) {
     this.name = name;
     this.votes = 0;
@@ -35,11 +37,12 @@ function Img(name) {
 
 Img.all = [];
 
-
+////Update By Using JSON
 function Update() {
     var finalyString = JSON.stringify(Img.all);
     localStorage.setItem('myChart', finalyString);
 }
+///convert JSON to localStorage 
 function getFinally() {
     var getString = localStorage.getItem('myChart');
     if (getString) {
@@ -56,7 +59,7 @@ for (var i = 0; i < imgArray.length; i++) {
 
 /////////////////////////////while 
 var leftImg, centerImg, rightImg;
-// var leftImg1, centerImg1, rightImg1;
+
 
 function firstRender() {
 
@@ -65,7 +68,7 @@ function firstRender() {
     centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
     rightImg = Img.all[randomNumber(0, Img.all.length - 1)];
 
-
+///using while for unique picture each round 
     while (leftImg === centerImg || leftImg === rightImg || centerImg === rightImg || arrayClick.includes(centerImg.imgPath) || arrayClick.includes(leftImg.imgPath) || arrayClick.includes(rightImg.imgPath)) {
         leftImg = Img.all[randomNumber(0, Img.all.length - 1)];
         centerImg = Img.all[randomNumber(0, Img.all.length - 1)];
@@ -86,6 +89,7 @@ function firstRender() {
     rightImage.setAttribute('alt', rightImg.name);
     rightImage.setAttribute('title', rightImg.name);
 
+
     arrayClick[0] = leftImg.imgPath;
     arrayClick[1] = rightImg.imgPath;
     arrayClick[2] = centerImg.imgPath;
@@ -97,7 +101,7 @@ firstRender();
 
 
 
-
+///render for the result 
 function secondRender() {
     var ulE1 = document.getElementById('finally');
     for (var i = 0; i < Img.all.length; i++) {
@@ -124,6 +128,8 @@ function Vote_click() {
 }
 
 //////////////////////////////////
+
+////for the chart 
 var ctx = document.getElementById('myChart').getContext('2d');
 function thirdRender() {
     Vote_click();
@@ -189,7 +195,7 @@ function thirdRender() {
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 294, 1)'
+                    'rgba(25, 159, 294, 1)'
 
 
                 ],///color fill in bar 
@@ -246,9 +252,9 @@ function handleClickOnImg(event) {
     } else {
         console.log('more than 25 clicks');
         images.removeEventListener('click', handleClickOnImg);
-
-        // secondRender();
-        Update();
+Update();
+        secondRender();
+        
         thirdRender();
 
     }

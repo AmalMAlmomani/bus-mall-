@@ -22,9 +22,7 @@ main {
     padding: 2px 0px 0px 0px;
     border: 5px solid rgb(146, 16, 16);  */
   }
-  img{
-width: 200px; 
-  }
+
 aside{
     display: inline-block;
     border: double  ;
@@ -36,22 +34,17 @@ aside{
 h2{
     margin: 10px 20px 0px 5px;
 }
+img{
+   width: 168px;
+}
 #images1{
     
-     display: inline;;
+     display: inline;
      border: solid rgb(128, 19, 0);
    position: absolute;
-  
-    
+   
 }
-/* p{
-    display: inline;;
-    border: solid rgb(128, 19, 0);
-  position: absolute;
-} */
-
-/* footer{
-    border: solid rgb(102, 102, 102); 
-    width: 100%;
-    height: 100%;
- } */
+ canvas{
+   border: double;
+   margin: 180px 0px 10px 0px;
+ }
